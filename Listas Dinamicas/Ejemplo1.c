@@ -60,7 +60,7 @@ int main (void)
 	  break;
 	default:
 	  printf ("Ha elegido una opción que no existe\n\n");
-	  printf ("Presione enter para continuar...\n\n");
+	  printf ("Presione enter para continuar....\n\n");
 	  __fpurge (stdin);
 	  scanf ("%c", &Enter);
 	  break;

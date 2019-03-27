@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void Inserta (struct Nodo **Insercion, int i)
+{
+  struct Nodo *Avanza, *Nuevo;
+  Avanza = *Insercion;
+  if ((Nuevo = (struct Nodo *) malloc (sizeof (struct Nodo))) == NULL)
+    {
+      printf ("No hay memoria\n");
+      exit (1);
+    }
+}
+
+void Imprime (struct Nodo *Impresor)
+{
+  if (Impresor != NULL)
+    {
+      Imprime (Impresor -> Izq);
+      printf ("%d\n", Impresor -> Num);
+      Imprime (Impresor -> Der);
+    }
+}
+
+void Borra (struct Nodo *Borrador)
+{
+  if (Borrador != NULL)
+    {
+      Borra (Borrador -> Izq);
+      Borra (Borrador -> Der);
+      free (Borrador);
+    }
+}

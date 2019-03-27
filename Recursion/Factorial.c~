@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void Factorial (int Numero, long *Res);
+
+int main (void)
+{
+  int Numero;
+  printf ("\n");
+  printf ("Ingrese un numero para obtener su factorial: ");
+  scanf ("%d", &Numero);
+  system ("clear");
+  printf ("\n");
+  Factorial (Numero, &Res);
+}
+
+void Factorial (int Numero, long *Res)
+{
+  if (Numero == 1)
+    {
+      *Res = 1;
+    }
+  else
+    {
+      *Res = Numero * Factorial (Numero - 1, &Res);
+    }
+}

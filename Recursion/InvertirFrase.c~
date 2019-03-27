@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+
+void Invertir (char Frase [], char FraseInvertida [], int *i);
+
+int main (void)
+{
+  int i;
+  char Frase [200], FraseInvertida [200];
+  system ("clear");
+  printf ("\n");
+  printf ("Ingrese una frase: ");
+  gets (Frase);
+  printf ("\n");
+  Invertir (Frase, FraseInvertida, &i);
+  puts (FraseInvertida);
+}
+
+void Invertir (char Frase [], char FraseInvertida [], int *i)
+{
+  *i = 0;
+  if (*Frase != '\0')
+    {
+      Invertir (Frase + 1, FraseInvertida, i);
+      FraseInvertida [*i] = *Frase;
+      *i++;
+    }
+}

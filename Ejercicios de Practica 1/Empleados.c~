@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct def_empleado
+{
+  char Nombre;
+  char Edad;
+  char Antiguedad;
+  char Sueldo;
+} tipoEmpleado;
+
+int main (void)
+{
+  tipoEmpleado Empleados [10];
+  int Registrados = 0;
+  system ("clear");
+  printf ("EL BASE-DE-DATOS-DE-EMPLEADOS-TRON 3000\n");
+}

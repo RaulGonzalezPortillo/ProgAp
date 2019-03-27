@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main (void)
+{
+  FILE *Archivo;
+  char Nombre [200];
+  system ("clear");
+  printf ("\n");
+  printf ("Especifique el nombre de un archivo para analizarlo:\n\n");
+  gets (Nombre);
+  
+}

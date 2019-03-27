@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <string.h>
+
+void QuitaEspacios (char Frase []);
+void AMayusculas (char Frase []);
+void Invierte (char Frase [], char invertida []);
+  
+int main (void)
+{
+  char linea1 [300], linea2 [300];
+  printf ("Introduzca la frase:\n");
+  gets (linea1);
+  QuitaEspacios (linea1);
+  AMayusculas (linea1);
+  Invierte (linea1, linea2);
+  if (strcmp (linea1, linea2) == 0)
+    printf ("Si es palindromo\n");
+  else
+    printf ("No es palindromo\n");
+}
+
+void QuitaEspacios (char Frase [])
+{
+  char Frase2 [300];
+  int i, j = 0;
+  for (i = 0; i < strlen (Frase); i++)
+    {
+      if (((Frase [i] >= 'a') && (Frase [i] <= 'z')) || ((Frase [i] >= 'A') && (Frase [i] <= 'Z')))
+	{
+	  Frase2 [j] = Frase [i];
+	  j++;
+	}
+    }
+  Frase2 [j] = '\0';
+  strcpy (Frase, Frase2);
+}
+
+void AMayusculas (char Frase [])
+{
+  int i;
+  for (i = 0; i < strlen (Frase); i++)
+    {
+      if ((Frase [i] >= 'a') && (Frase [i] <= 'z'))
+	Frase [i] = Frase [i] - 'a' + 'A';
+    }
+}
+
+void Invierte (char Frase [], char invertida [])
+{
+  int i, j = 0;
+  for (i = strlen (Frase) - 1; i >= 0; i--)
+    {
+      invertida [j] = Frase [i];
+      j++;
+    }
+  invertida [j] = '\0';
+}

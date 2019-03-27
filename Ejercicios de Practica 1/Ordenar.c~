@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+int main (void)
+{
+  int Numeros [100], CantidadALeer;
+  printf ("Introduzca la cantidad de números a leer: ");
+  scanf (%d, &CantidadALeer);
+}

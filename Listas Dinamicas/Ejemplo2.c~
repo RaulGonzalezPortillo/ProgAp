@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct Def_Numero
+{
+  int Numero;
+  struct Def_Numero *Sig;
+  struct Def_Numero *Ant;
+} TipoNumero;
+
+int main (void)
+{
+  int Eleccion;
+  char Enter;
+  do
+    {
+      system ("clear");
+      printf ("\n");
+      printf ("Eliga una opción:\n\n\n");
+      printf ("1.- Insertar en orden\n\n");
+      printf ("2.- Imprimir desde el inicio\n\n");
+      printf ("3.- Imprimir desde el final\n\n");
+      scanf (" %d", &Eleccion);
+      printf ("\n");
+      switch (Eleccion)
+	{
+	case 1:
+	  break;
+	case 2:
+	  break;
+	case 3:
+	  break;
+	case 4:
+	  break;
+	default:
+	  printf ("
+	}
+    }
+}

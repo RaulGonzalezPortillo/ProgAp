@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <sting.h>
+#include <stdlib.h>
+
+typedef struct def_Documento
+{
+  char Nombre[100];
+  int ID, Paginas, Estado;
+  struct def_Documento *sig;
+} TipoDocumento
+
+int main (void)
+{
+  int Seleccion;
+  char Enter;
+  do
+    {
+      system ("clear");
+      printf ("\n");
+      pritnf ("1.- Introducir documento a la cola de impresión\n\n");
+      printf ("2.- Listar trabajos en la cola de impresión\n\n");
+      pritnf ("3.- Eliminar trabajo de la cola de impresión\n\n");
+      printf ("4.- Imprimir documento\n\n");
+      printf ("5.- Guardar cola en archivo\n\n");
+      printf ("6.- Leer cola de archivo\n\n");
+      printf ("7.- Salir\n\n");
+      scanf ("%d", &Seleccion);
+    }
+  while (Seleccion != 7);
+}

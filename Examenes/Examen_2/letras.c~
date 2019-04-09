@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+struct Nodo
+{
+  char Letra;
+  struct Nodo *Izq, *Der;
+};
+
+int main (void)
+{
+  FILE *Archivo;
+  char NombreDeArchivo [100], Letra, Enter;
+  struct Nodo *Raiz;
+  Raiz = NULL;
+  system ("clear");
+  printf ("\n");
+  printf ("Introduzca el nombre del archivo con el que generará el árbol:\n\n");
+  __fpurge (stdin);
+  gets (NombreDeArchivo);
+  printf ("\n");
+  Archivo = fopen (NombreDeArchivo, "rt");
+  if (Archivo == NULL)
+    {
+      printf ("No se pudo abrir el archivo, saliendo...\n\n");
+    }
+  else
+    {
+      while ((fscanf (Archivo, "%c", &Letra)) == 1)
+	{
+	  if ((Letra >= 'a' && Letra <= 'z') || (Letra >= 'A' && Letra <= 'Z'))
+	    {
+	      //CrearArbol
+	    }
+	}
+      do
+	{
+	  system ("clear");
+	  printf ("Menú principal:\n\n\n");
+	  printf ("1.- Imprimir en orden\n\n");
+	  printf ("2.- Número de nodos\n\n");
+	  printf ("3.- Altura del árbol\n\n");
+	  printf ("4.- Número de hojas\n\n");
+	  printf ("5.- Salir\n\n");
+	  __fpurge (stdin);
+	  scanf ("%c");
+	  printf ("\n");
+	}
+      while (Salir == 0);
+    }
+}

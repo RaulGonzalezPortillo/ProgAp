@@ -1,0 +1,14 @@
+#include <gtk/gtk.h>
+#include <string.h>
+
+gint main ( gint argc, gchar *argv[])
+{
+  GtkWidget *window;
+  GtkWidget *vbox;
+  GtkWidget *hbox;
+  GtkWidget *entrybox;
+
+  gtk_init(&argc, &argv);
+
+  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_container_border_width(GTK_CONTAINER(window),5);

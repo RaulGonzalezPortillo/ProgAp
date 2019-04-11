@@ -1,0 +1,12 @@
+#include <gtk/gtk.h>
+#include <string.h>
+
+GtkWidget *AddButton(GtkWidget *theBox, const gchar *buttonText, gpointer CallBackFunction, GtkWidget *EntryBox);
+void StopTheApp(GtkWidget *window, gpointer data);
+
+void StopTheApp(GtkWidget *window, gpointer data)
+{
+    gtk_main_quit();
+    
+
+}

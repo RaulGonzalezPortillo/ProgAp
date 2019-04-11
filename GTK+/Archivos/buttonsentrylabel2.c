@@ -9,7 +9,8 @@
 #include <stdlib.h>
 
 typedef struct _node{
-    GtkWidget *label[3];
+  GtkWidget *label[3];
+  int Bandera;
 }NODO;
 
 GtkWidget *AddButton(GtkWidget *theBox, const gchar *buttonText, gpointer CallBackFunction, GtkWidget *EntryBox);
@@ -49,6 +50,7 @@ gint main ( gint argc, gchar *argv[])
   button = gtk_button_new_with_label("camb col");
   gtk_box_pack_start(GTK_BOX(box),button,FALSE,TRUE,0);
   gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(CambiaLabel),&lista);
+  
   gtk_widget_show(button);
 
   for (i=0; i<3; i++)
@@ -79,12 +81,13 @@ gint main ( gint argc, gchar *argv[])
 
 GtkWidget *AddButton(GtkWidget *theBox, const gchar *buttonText, gpointer CallBackFunction, GtkWidget *EntryBox)
 {
-    GtkWidget *button;
-    button = gtk_button_new_with_label(buttonText);
-    gtk_box_pack_start(GTK_BOX(theBox),button,FALSE,TRUE,0);
-    gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(CallBackFunction),EntryBox);
-    gtk_widget_show(button);
-    return button;
+  GtkWidget *button;
+  button = gtk_button_new_with_label(buttonText);
+  gtk_box_pack_start(GTK_BOX(theBox),button,FALSE,TRUE,0);
+  gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(CallBackFunction),EntryBox);
+  //El último parámetro necesita ser un pointer, creamos una estructura para pasar más info.
+  gtk_widget_show(button);
+  return button;
     
 
 }
@@ -102,12 +105,12 @@ void ButtonClicked(GtkButton *button, gpointer data)
 
 void HelloAction(GtkButton *button, gpointer data)
 {
-    const gchar *text;
+  const gchar *text;
     
     
-    text =gtk_entry_get_text(GTK_ENTRY(data));
+  text =gtk_entry_get_text(GTK_ENTRY(data));
     
-    g_print("%s",text);
+  g_print("%s",text);
     
     
 
@@ -115,7 +118,7 @@ void HelloAction(GtkButton *button, gpointer data)
 
 void StopTheApp(GtkWidget *window, gpointer data)
 {
-    gtk_main_quit();
+  gtk_main_quit();
     
 
 }
@@ -125,13 +128,26 @@ void CambiaLabel(GtkButton *button, gpointer data)
   GdkColor color;
   int i;
   NODO *datos=(NODO *)data;
+
+  if (datos -> Bandera == 0)
+    {
+      gdk_color_parse("#c92d2d", &color);
+      datos -> Bandera = 1;
+    }
+  else
+    {
+      gdk_color_parse("#2e79c9", &color); //#CODING <3
+      datos -> Bandera = 0;
+    }
   
-  //gdk_color_parse("#368f1f", &color);
-  color.red= 65000;
-  color.green= 30000;
-  color.blue= 55000;
+  
+  /*color.red= 65000;
+    color.green= 30000;
+    color.blue= 55000;*/
   
   for (i=0; i<3; i++)
-    gtk_widget_modify_fg(GTK_WIDGET(datos->label[i]), GTK_STATE_NORMAL, &color);
+    {
+      gtk_widget_modify_fg(GTK_WIDGET(datos->label[i]), GTK_STATE_NORMAL, &color);
+    }
  
 }

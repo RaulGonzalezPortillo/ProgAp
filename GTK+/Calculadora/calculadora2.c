@@ -45,7 +45,7 @@ gint main ( gint argc, gchar *argv[])
 
   cajah = gtk_hbox_new(TRUE,5);
   boton = AgregarBoton (cajah, "4", ClickNumero, cajae);
-  boton = AgregarBoton (cajah, "5", ClickNumero, cajae);
+-  boton = AgregarBoton (cajah, "5", ClickNumero, cajae);
   boton = AgregarBoton (cajah, "6", ClickNumero, cajae);
   boton = AgregarBotonNaranja (cajah, "-", ClickNumero, cajae);
   gtk_box_pack_start(GTK_BOX(cajav),cajah,TRUE,TRUE,5);

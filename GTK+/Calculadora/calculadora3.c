@@ -1,6 +1,6 @@
 #include <gtk/gtk.h>
 #include <string.h>
-#include <stdlib.>
+#include <stdlib.h>
 #include <stdio.h>
 
 typedef struct node{
@@ -19,23 +19,76 @@ void ClickCE(GtkButton *button, gpointer data);
 void ClickC(GtkButton *button, gpointer data);
 void ClickResultado(GtkButton *button, gpointer data);
 
+
 gint main ( gint argc, gchar *argv[])
 {
 
   GtkWidget *ventana;
   GtkWidget *boton;
   GtkWidget *cajah, *subcajah;
-  GtkWidget *cajav;
+  GtkWidget *cajav, *cajav2;
   GtkWidget *cajae;
+  GtkWidget *root_menu;
+  GtkWidget *menu_bar;
+  GtkWidget *op1;
+  GtkWidget *op2;
+  GtkWidget *op3;
+  GtkWidget *menu;
 
   gtk_init(&argc, &argv);
 
   ventana = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_container_border_width(GTK_CONTAINER(ventana),5);
-
-  cajav = gtk_vbox_new(TRUE,0);
+  gtk_container_border_width(GTK_CONTAINER(ventana), 5);
 
   cajae = gtk_entry_new();
+  
+  menu_bar = gtk_menu_bar_new ();
+
+  menu = gtk_menu_new ();
+  op1 = gtk_menu_item_new_with_label ("Limpiar");
+  op2 = gtk_menu_item_new_with_label ("Salir");
+
+  gtk_signal_connect (GTK_OBJECT (op1), "activate", GTK_SIGNAL_FUNC (ClickCE), cajae);
+  gtk_signal_connect (GTK_OBJECT (op2), "activate", GTK_SIGNAL_FUNC (DetenerApp), NULL);
+
+  gtk_menu_append (GTK_MENU (menu), op1);
+  gtk_menu_append (GTK_MENU (menu), op2);
+
+  root_menu = gtk_menu_item_new_with_label ("Calculadora");
+
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (root_menu), menu);
+  
+  gtk_menu_bar_append (GTK_MENU_BAR (menu_bar), root_menu);
+
+  menu = gtk_menu_new ();
+  op1 = gtk_menu_item_new_with_label ("Leer");
+  op2 = gtk_menu_item_new_with_label ("Guardar");
+  op3 = gtk_menu_item_new_with_label ("Nuevo");
+
+  gtk_menu_append (GTK_MENU (menu), op1);
+  gtk_menu_append (GTK_MENU (menu), op2);
+  gtk_menu_append (GTK_MENU (menu), op3);
+
+  gtk_signal_connect (GTK_OBJECT (op1), "activate", GTK_SIGNAL_FUNC (ClickCE), NULL);
+  gtk_signal_connect (GTK_OBJECT (op2), "activate", GTK_SIGNAL_FUNC (ClickCE), NULL);
+  gtk_signal_connect (GTK_OBJECT (op3), "activate", GTK_SIGNAL_FUNC (ClickCE), NULL);
+
+  root_menu = gtk_menu_item_new_with_label ("Juego");
+
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (root_menu), menu);
+
+  gtk_menu_bar_append (GTK_MENU_BAR (menu_bar), root_menu);
+
+  root_menu = gtk_menu_item_new_with_label ("Opc3");
+  gtk_signal_connect (GTK_OBJECT (root_menu), "activate", GTK_SIGNAL_FUNC (DetenerApp), NULL);
+  gtk_menu_bar_append (GTK_MENU_BAR (menu_bar), root_menu);
+		       
+  cajav = gtk_vbox_new(TRUE,0);
+
+  cajav2 = gtk_vbox_new(FALSE,0);
+
+  gtk_box_pack_start(GTK_BOX(cajav2),menu_bar,FALSE,FALSE,0);
+  
   gtk_box_pack_start(GTK_BOX(cajav),cajae,TRUE,TRUE,5);
 
   cajah = gtk_hbox_new(TRUE,5);
@@ -73,11 +126,15 @@ gint main ( gint argc, gchar *argv[])
   subcajah = gtk_hbox_new(TRUE,5);
   boton = AgregarBoton (subcajah, ".", ClickNumero, cajae);
   boton = AgregarBotonNaranja (subcajah, "=", ClickResultado, cajae);
+  
   gtk_box_pack_start(GTK_BOX(cajah),subcajah,TRUE,TRUE,0);
   gtk_box_pack_start(GTK_BOX(cajav),cajah,TRUE,TRUE,5);
 
+  gtk_box_pack_start(GTK_BOX(cajav2),cajav, TRUE, TRUE,0);
+  
   gtk_signal_connect(GTK_OBJECT(ventana),"destroy",GTK_SIGNAL_FUNC(DetenerApp),NULL);
-  gtk_container_add(GTK_CONTAINER(ventana),cajav);
+  
+  gtk_container_add(GTK_CONTAINER(ventana),cajav2);
   gtk_widget_show_all(ventana);
   gtk_main();
   return 0;
@@ -137,7 +194,9 @@ void ClickOperacion(GtkButton *button, gpointer data)
 {
   Nodo *datos=(Nodo *)data;
   char Numero [10];
-  strcpy (Numero, gtk_entry_get_text (GTK_ENTRY (data)));
+  const gchar *Entrada;
+  Entrada = gtk_entry_get_text (GTK_ENTRY (data));
+  strcpy (Numero, Entrada);
   datos -> Numero = atof (Numero);
   strcpy (datos -> Operacion, gtk_button_get_label (button));
   gtk_entry_set_text(GTK_ENTRY(data), "");

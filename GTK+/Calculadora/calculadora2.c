@@ -1,11 +1,18 @@
 #include <gtk/gtk.h>
 #include <string.h>
 
+typedef struct node{
+  GtkWidget *button;
+  float Numero;
+  char Operacion [3];
+} Nodo;
+
 void DetenerApp (GtkWidget *window, gpointer data);
 GtkWidget *AgregarBoton (GtkWidget *theBox, const gchar *buttonText, gpointer CallBackFunction, GtkWidget *EntryBox);
 GtkWidget *AgregarBotonNaranja (GtkWidget *theBox, const gchar *buttonText, gpointer CallBackFunction, GtkWidget *EntryBox);
 GtkWidget *AgregarBotonGris(GtkWidget *theBox, const gchar *buttonText, gpointer CallBackFunction, GtkWidget *EntryBox);
 void ClickNumero (GtkButton *button, gpointer data);
+void ClickOperacion(GtkButton *button, gpointer data);
 void ClickCE(GtkButton *button, gpointer data);
 void ClickC(GtkButton *button, gpointer data);
 void ClickResultado(GtkButton *button, gpointer data);
@@ -32,29 +39,29 @@ gint main ( gint argc, gchar *argv[])
   cajah = gtk_hbox_new(TRUE,5);
   boton = AgregarBotonGris (cajah, "CE", ClickCE, cajae);
   boton = AgregarBotonGris (cajah, "C", ClickC, cajae);
-  boton = AgregarBotonGris (cajah, "%", ClickNumero, cajae);
-  boton = AgregarBotonNaranja (cajah, "/", ClickNumero, cajae);
+  boton = AgregarBotonGris (cajah, "%", ClickOperacion, cajae);
+  boton = AgregarBotonNaranja (cajah, "/", ClickOperacion, cajae);
   gtk_box_pack_start(GTK_BOX(cajav),cajah,TRUE,TRUE,5);
 
   cajah = gtk_hbox_new(TRUE,5);
   boton = AgregarBoton (cajah, "7", ClickNumero, cajae);
   boton = AgregarBoton (cajah, "8", ClickNumero, cajae);
   boton = AgregarBoton (cajah, "9", ClickNumero, cajae);
-  boton = AgregarBotonNaranja (cajah, "x", ClickNumero, cajae);
+  boton = AgregarBotonNaranja (cajah, "x", ClickOperacion, cajae);
   gtk_box_pack_start(GTK_BOX(cajav),cajah,TRUE,TRUE,5);
 
   cajah = gtk_hbox_new(TRUE,5);
   boton = AgregarBoton (cajah, "4", ClickNumero, cajae);
--  boton = AgregarBoton (cajah, "5", ClickNumero, cajae);
+  boton = AgregarBoton (cajah, "5", ClickNumero, cajae);
   boton = AgregarBoton (cajah, "6", ClickNumero, cajae);
-  boton = AgregarBotonNaranja (cajah, "-", ClickNumero, cajae);
+  boton = AgregarBotonNaranja (cajah, "-", ClickOperacion, cajae);
   gtk_box_pack_start(GTK_BOX(cajav),cajah,TRUE,TRUE,5);
 
   cajah = gtk_hbox_new(TRUE,5);
   boton = AgregarBoton (cajah, "1", ClickNumero, cajae);
   boton = AgregarBoton (cajah, "2", ClickNumero, cajae);
   boton = AgregarBoton (cajah, "3", ClickNumero, cajae);
-  boton = AgregarBotonNaranja (cajah, "+", ClickNumero, cajae);
+  boton = AgregarBotonNaranja (cajah, "+", ClickOperacion, cajae);
   gtk_box_pack_start(GTK_BOX(cajav),cajah,TRUE,TRUE,5);
 
   cajah = gtk_hbox_new(TRUE,5);
@@ -119,9 +126,19 @@ GtkWidget *AgregarBotonGris(GtkWidget *theBox, const gchar *buttonText, gpointer
 
 void ClickNumero(GtkButton *button, gpointer data)
 {
-  char Numero [3];
-  strcpy (Numero,gtk_button_get_label (button));
+  char Numero[3];
+  strcpy (Numero, gtk_button_get_label (button));
   gtk_entry_append_text(GTK_ENTRY(data), Numero);
+}
+
+void ClickOperacion(GtkButton *button, gpointer data)
+{
+  Nodo *datos=(Nodo *)data;
+  char Numero [10];
+  strcpy (Numero, gtk_entry_get_text (GTK_ENTRY (data)));
+  datos -> Numero = atof (Numero);
+  strcpy (datos -> Operacion, gtk_button_get_label (button));
+  gtk_entry_set_text(GTK_ENTRY(data), "");
 }
 
 void ClickCE(GtkButton *button, gpointer data)
@@ -141,32 +158,34 @@ void ClickC(GtkButton *button, gpointer data)
 
 void ClickResultado(GtkButton *button, gpointer data)
 {
-  float Numero1, Numero2, Resultado;
+  Nodo *datos=(Nodo *)data;
+  float Numero2, Resultado;
   int Num1, Num2;
-  char Operador, CadenaResultado [20];
+  char CadenaResultado [20], TempEntrada [20];
   const gchar *Entrada;
   Entrada = gtk_entry_get_text (GTK_ENTRY (data));
-  sscanf (Entrada, "%f%c%f", &Numero1, &Operador, &Numero2);
-  switch (Operador)
-    {
+  strcpy (TempEntrada, Entrada);
+  Numero2 = atof (TempEntrada);
+  switch (datos -> Operacion [0])
+  {
     case '+':
-	Resultado = Numero1 + Numero2;
-	break;
+    Resultado = datos -> Numero + Numero2;
+    break;
     case '-':
-	Resultado = Numero1 - Numero2;
-	break;
+    Resultado = datos -> Numero - Numero2;
+    break;
     case '/':
-	Resultado = Numero1 / Numero2;
-	break;
+    Resultado = datos -> Numero / Numero2;
+    break;
     case 'x':
-	Resultado = Numero1 * Numero2;
-	break;
+    Resultado = datos -> Numero * Numero2;
+    break;
     case '%':
-      Num1 = Numero1;
-      Num2 = Numero2;
-      Resultado = Num1 % Num2;
-      break;
-    }
+    Num1 = datos -> Numero;
+    Num2 = Numero2;
+    Resultado = Num1 % Num2;
+    break;
+  }
   sprintf (CadenaResultado, "%.2f", Resultado);
   gtk_entry_set_text (GTK_ENTRY (data), CadenaResultado);
 }

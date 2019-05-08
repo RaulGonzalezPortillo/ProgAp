@@ -1,0 +1,34 @@
+#include <gtk/gtk.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct def_Datos
+{
+  GtkWidget *Edad;
+  GtkWidget *Peso;
+  GtkWidget *Zona [5];
+  char Genero;
+} TipoDatos;
+
+int main (int argc, char *argv [])
+{
+  int i:
+  GtkWidget *Ventana, *CajaV; *CajaH [11], *EntradaEdad, *EntradaPeso, *Texto;
+  TipoDatos Datos;
+  gtk_init (&argc, &argv);
+  Ventana = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (Ventana), "Zonas Cardiacas");
+  CajaV = gtk_vbox_new (TRUE, 5);
+  for (i = 0; i < 11; i++)
+    {
+      CajaH [i] = gtk_box_new (TRUE, 5);
+    }
+  Texto = gtk_label_new ("Edad:");
+  EntradaEdad = gtk_entry_new ();
+  Datos.Edad = EntradaEdad;
+  gtk_box_pack_start (GTK_BOX (CajaH [0], Texto, TRUE, TRUE, 5));
+  gtk_box_pack_start (GTK_BOX (CajaH [0], EntradaEdad, TRUE, TRUE, 5));
+  gtk_box_pack_start (GTK_BOX (CajaV), CajaH [0], TRUE, TRUE, 5));
+gtk_signal_connect (GTK_OBJECT (Ventana), "destroy", GTK_SIGNAL_FUNC (DetenerApp), NULL);
+}

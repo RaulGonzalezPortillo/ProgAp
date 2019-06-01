@@ -1,0 +1,9 @@
+OPERACIONES ELEMENTALES
+
+Tres tipos de operaciones sobre las ecuaciones de un sistema, llamadas operaciones elementales, permiten transformar un sistema a otros, sin modificar el conjunto solución:
+
+a) Multiplicar una ecuación por un número real distinto de cero, esto es, multiplicar a ambos lados de la igualdad por un mismo número.
+b) Multiplicar una ecuación por un número real y sumarla a otra ecuación.
+c) Intercambiar de posición dos ecuaciones cualesquiera.
+
+Parece bastante claro que aplicando operaciones del tipo a) y c), a un sistema dado, se obtengan otros sistemas con el mismo conjunto solución. Lo mismo ocurre si se aplican operaciones del tipo b), aunque en este caso la justificación tal vez no sea tan evidente. En todo caso, demostrar que las operaciones elementales no cambian el conjunto solución de un sistema es un ejercicio importante, que se pospone hasta disponer del producto de matrices.

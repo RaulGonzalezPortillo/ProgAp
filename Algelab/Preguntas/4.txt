@@ -1,0 +1,10 @@
+c
+Si U es un conjunto de vectores linealmente independientes de R³, ¿cuántos elementos, a lo más, tiene U?
+
+a)  2
+
+b)  4
+
+c)  3
+
+d)  1

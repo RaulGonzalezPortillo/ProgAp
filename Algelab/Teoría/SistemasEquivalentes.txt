@@ -1,0 +1,7 @@
+SISTEMAS EQUIVALENTES
+
+Dos sistemas de ecuaciones lineales con m incógnitas son equivalentes si tienen el mismo conjunto solución.
+
+De esta definición se tiene que si un sistema de ecuaciones lineales es el resultado de aplicarle operaciones elementales a otro,ambos sistemas son equivalentes.
+
+El método de reducción gaussiana permite resolver sistemas de ecuaciones lineales, explotando la idea de equivalencia. Es decir,transformando el sistema mediante operaciones elementales, hasta obtener uno cuya forma permite resolverlo mediante “sustitución hacia atrás”.

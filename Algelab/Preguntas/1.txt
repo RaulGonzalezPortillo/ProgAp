@@ -1,0 +1,18 @@
+b
+¿Cuál de las siguientes matrices reducidas representa a un sistema de ecuaciones lineales es inconsistente?
+
+a:  ( 1 0 0 1 )
+    ( 0 1 0 1 )
+    ( 0 0 1 0 )
+
+b:  ( 1 0 0 1 )
+    ( 0 1 0 1 )
+    ( 0 0 0 1 )
+
+c:  ( 1 0 0 1 )
+    ( 0 1 0 0 )
+    ( 0 0 1 1 )
+
+d:  ( 1 0 0 1 )
+    ( 0 1 0 1 )
+    ( 0 0 0 0 )

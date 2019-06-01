@@ -1,0 +1,10 @@
+d
+Un sistema de ecuaciones lineales no homogéneo tiene una solución particular dada por Xp = (4, −1,0); el sistema homogéneo asociado tiene soluciones de la forma Xh = X3 (−13,7,1). ¿Cuál de las siguientes es otra solución al sistema no homogéneo?
+
+a)  (−10,8,3)
+
+b)  (1,2,3)
+
+c)  (15,12,8)
+
+d)  (−22,13,2)

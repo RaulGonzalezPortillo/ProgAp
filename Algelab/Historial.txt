@@ -1,0 +1,38 @@
+Entrada:
+
+(	1	2	)
+(	3	4	)
+
+Procedimiento: Multiplicar por escalar (0)
+
+Matriz resultante:
+
+(	0	0	)
+(	0	0	)
+
+
+Entrada:
+
+(	1	2	)
+(	3	4	)
+
+Procedimiento: Multiplicar por escalar (10)
+
+Matriz resultante:
+
+(	10	20	)
+(	30	40	)
+
+
+Entrada:
+
+(	1	2	)
+(	3	4	)
+
+Procedimiento: Traza de una matriz
+
+Escalar resultante:
+
+5
+
+

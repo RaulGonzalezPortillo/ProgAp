@@ -1,0 +1,10 @@
+a
+Un subespacio del espacio vectorial V = R² es:
+
+a)  {(x, y): x = y}
+
+b)  {(x, y): x² + y² ≤ 1}
+
+c)  {(x, y): y ≥ 0}
+
+d)  {(x, y): x ≥ 0}

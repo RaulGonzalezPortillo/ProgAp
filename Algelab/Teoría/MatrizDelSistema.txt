@@ -1,0 +1,17 @@
+MATRIZ DEL SISTEMA
+
+En un sistema n x m:
+
+{a11x1 + a12x2 + ··· + a1mxm = b1
+{a21x1 + a22x2 + ··· + a2mxm = b2
+{......
+{an1x1 + an2x2 + ··· + anmxm = bn
+
+Se puede distinguir el siguiente arreglo rectangular de números aij que se conocerá como matriz del sistema y se denotará como A= (aij):
+
+A = (a11  a12 ··· a1m)
+    (a21  a22 ··· a2m)
+    (................)
+    (an1  an2 ··· anm)
+
+Una matriz A como esta, se dice que es una matriz n × m, es decir, con n filas y m columnas.
